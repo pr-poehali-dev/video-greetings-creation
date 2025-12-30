@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -86,6 +87,7 @@ const initialContent: ContentItem[] = [
 ];
 
 const Index = () => {
+  const navigate = useNavigate();
   const [content, setContent] = useState<ContentItem[]>(initialContent);
   const [activeTab, setActiveTab] = useState<string>('all');
   const [sortBy, setSortBy] = useState<'rating' | 'likes'>('likes');
@@ -186,9 +188,13 @@ const Index = () => {
             Делись творчеством и получай признание!
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" className="gradient-bg hover:opacity-90 text-lg px-8">
+            <Button 
+              size="lg" 
+              className="gradient-bg hover:opacity-90 text-lg px-8"
+              onClick={() => navigate('/greeting')}
+            >
               <Icon name="Sparkles" size={20} className="mr-2" />
-              Начать творить
+              Создать поздравление
             </Button>
             <Button size="lg" variant="outline" className="text-lg px-8">
               <Icon name="Play" size={20} className="mr-2" />
